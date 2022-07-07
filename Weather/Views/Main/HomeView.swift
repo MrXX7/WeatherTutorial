@@ -27,7 +27,17 @@ struct HomeView: View {
                     .font(.largeTitle)
                 Spacer()
                 VStack {
-                    Text("19°" + "\n" + "Mostly Clear")
+//                    Text("19°" + "\n" + "Mostly Clear")
+                    Text("19°")
+                     .font(.system(size: 96, weight: .thin))
+                        .foregroundColor(.primary)
+                    +
+                    Text("\n")
+                    +
+                    Text("Mostly Clear")
+                        .font(.title3.weight(.semibold))
+                        .foregroundColor(.secondary)
+                    
                     Text("H:24°   L:18°")
                         .font(.title3.weight(.semibold))
                 }
@@ -41,5 +51,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .preferredColorScheme(.dark)
     }
 }

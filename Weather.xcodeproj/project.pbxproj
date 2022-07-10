@@ -14,6 +14,8 @@
 		AD3A74482875DD6E0042C217 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3A74472875DD6E0042C217 /* Extensions.swift */; };
 		AD3A744A2875DEF30042C217 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3A74492875DEF30042C217 /* HomeView.swift */; };
 		AD4FBD1B287A0B1100219C65 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4FBD1A287A0B1100219C65 /* TabBar.swift */; };
+		ADC8FE03287AD955008F9CA7 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = ADC8FE02287AD955008F9CA7 /* BottomSheet */; };
+		ADC8FE05287ADC36008F9CA7 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC8FE04287ADC36008F9CA7 /* ForecastView.swift */; };
 		ADD548DB287AB7BC004F7CF6 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD548DA287AB7BC004F7CF6 /* Shapes.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,7 @@
 		AD3A74472875DD6E0042C217 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AD3A74492875DEF30042C217 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AD4FBD1A287A0B1100219C65 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		ADC8FE04287ADC36008F9CA7 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		ADD548DA287AB7BC004F7CF6 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -34,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADC8FE03287AD955008F9CA7 /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +128,7 @@
 		AD3A74452875DCFA0042C217 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				ADC8FE04287ADC36008F9CA7 /* ForecastView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -151,6 +156,9 @@
 			dependencies = (
 			);
 			name = Weather;
+			packageProductDependencies = (
+				ADC8FE02287AD955008F9CA7 /* BottomSheet */,
+			);
 			productName = Weather;
 			productReference = AD3A742F2875DB8E0042C217 /* Weather.app */;
 			productType = "com.apple.product-type.application";
@@ -179,6 +187,9 @@
 				Base,
 			);
 			mainGroup = AD3A74262875DB8E0042C217;
+			packageReferences = (
+				ADC8FE01287AD955008F9CA7 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+			);
 			productRefGroup = AD3A74302875DB8E0042C217 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -209,6 +220,7 @@
 				AD3A744A2875DEF30042C217 /* HomeView.swift in Sources */,
 				AD3A74482875DD6E0042C217 /* Extensions.swift in Sources */,
 				AD3A74332875DB8E0042C217 /* WeatherApp.swift in Sources */,
+				ADC8FE05287ADC36008F9CA7 /* ForecastView.swift in Sources */,
 				AD4FBD1B287A0B1100219C65 /* TabBar.swift in Sources */,
 				ADD548DB287AB7BC004F7CF6 /* Shapes.swift in Sources */,
 			);
@@ -411,6 +423,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ADC8FE01287AD955008F9CA7 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Wouter125/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ADC8FE02287AD955008F9CA7 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADC8FE01287AD955008F9CA7 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD3A74272875DB8E0042C217 /* Project object */;
 }

@@ -12,7 +12,19 @@ struct TabBar: View {
     
     var body: some View {
         ZStack {
+//            Mark Arc Shape
+            Arc()
+                .fill(Color.tabBarBackground)
+                .frame(height: 88)
+                .overlay {
+//                    Mark Arc Border
+                    Arc()
+                        .stroke(Color.tabBarBackground, lineWidth: 0.5)
+                }
+            
+//            Mark Tab Items
             HStack {
+//                Mark Expand Button
                 Button {
                     action()
                 }label: {
@@ -20,7 +32,7 @@ struct TabBar: View {
                         .frame(width: 44, height: 44)
                }
                 Spacer()
-                
+//                Mark Navigation Button
                 NavigationLink {
                     
                 } label: {

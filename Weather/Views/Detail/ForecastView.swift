@@ -18,7 +18,7 @@ struct ForecastView: View {
         .overlay {
 //            Mark Bottom Sheet Inner Shadow (Border)
             RoundedRectangle(cornerRadius: 44)
-                .stroke(.white, lineWidth: 1)
+                .stroke(Color.bottomSheetBorderMiddle, lineWidth: 1)
                 .blendMode(.overlay)
                 .offset(y: 1)
                 .blur(radius: 0)

@@ -12,9 +12,20 @@ struct ForecastView: View {
         ScrollView {
             
         }
+        .backgroundBlur(radius: 25, opaque: true)
         .background(Color.bottomSheetBackground)
-        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 44))
+        .overlay {
+//            Mark Bottom Sheet Inner Shadow (Border)
+            RoundedRectangle(cornerRadius: 44)
+                .stroke(.white, lineWidth: 1)
+                .blendMode(.overlay)
+                .offset(y: 1)
+                .blur(radius: 0)
+                .mask {
+                    RoundedRectangle(cornerRadius: 44)
+                }
+        }
         .overlay {
 //            Mark Bottom Sheet Seperator
             Divider()
@@ -37,6 +48,6 @@ struct ForecastView_Previews: PreviewProvider {
     static var previews: some View {
         ForecastView()
             .background(Color.background)
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
     }
 }

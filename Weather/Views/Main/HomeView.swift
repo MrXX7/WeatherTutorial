@@ -16,6 +16,7 @@ enum BottomSheetPosition: CGFloat, CaseIterable {
 struct HomeView: View {
     @State var bottomSheetPosition: BottomSheetPosition = .middle
     @State var bottomSheetTranslation: CGFloat = BottomSheetPosition.middle.rawValue
+    @State var hasDragged: Bool = false
     
     var bottomSheetTranslationProrated: CGFloat {
         (bottomSheetTranslation - BottomSheetPosition.middle.rawValue) / (BottomSheetPosition.top.rawValue - BottomSheetPosition.middle.rawValue)
@@ -25,6 +26,7 @@ struct HomeView: View {
         NavigationView {
             GeometryReader { geometry in
                 let screenHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
+                let imageOffset = screenHeight + 36
                 ZStack {
         //            Background Color
                     Color.background
@@ -34,11 +36,14 @@ struct HomeView: View {
                     Image("Background")
                         .resizable()
                         .ignoresSafeArea()
+                        .offset(y: -bottomSheetTranslationProrated * imageOffset)
         //            House Image
                     Image("House")
                         .frame(maxHeight: .infinity, alignment: .top)
                         .padding(.top, 257)
-                    VStack(spacing: -10) {
+                        .offset(y: -bottomSheetTranslationProrated * imageOffset)
+//                    Current weather
+                    VStack(spacing: -10 * (1 - bottomSheetTranslationProrated)) {
                         Text("Montreal")
                             .font(.largeTitle)
                         
@@ -47,25 +52,36 @@ struct HomeView: View {
                             
                             Text("H:24°   L:18°")
                                 .font(.title3.weight(.semibold))
+                                .opacity(1 - bottomSheetTranslationProrated)
                         }
                         Spacer()
                     }
                     .padding(.top, 51)
+                    .offset(y: -bottomSheetTranslationProrated * 46)
                     
     //                Mark Bottom Sheet
                     BottomSheetView(position: $bottomSheetPosition) {
-                        Text(bottomSheetTranslation.formatted())
+                        Text(bottomSheetTranslationProrated.formatted())
                     } content: {
                         ForecastView()
                     }
                     .onBottomSheetDrag { translation in
                         bottomSheetTranslation = translation / screenHeight
+                        
+                        withAnimation(.easeInOut) {
+                        if bottomSheetPosition == BottomSheetPosition.top {
+                            hasDragged = true
+                        } else {
+                            hasDragged = false
+                           }
+                        }
                     }
                     
     //                 Mark Tab Bar
                     TabBar(action: {
                         bottomSheetPosition = .top
                     })
+                    .offset(y: bottomSheetTranslationProrated * 115)
                 }
             }
             .navigationBarHidden(true)
@@ -75,7 +91,7 @@ struct HomeView: View {
         var string = AttributedString("19°" + "\n " + "Mostly Clear")
         
         if let temp = string.range(of: "19°") {
-            string[temp].font = .system(size: 96, weight: .thin)
+            string[temp].font = .system(size: (96 - bottomSheetTranslationProrated - (96 - 20)), weight: .thin)
             string[temp].foregroundColor = .primary
         }
         if let pipe = string.range(of: " | ") {

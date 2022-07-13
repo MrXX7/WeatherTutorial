@@ -61,9 +61,9 @@ struct HomeView: View {
                     
     //                Mark Bottom Sheet
                     BottomSheetView(position: $bottomSheetPosition) {
-                        Text(bottomSheetTranslationProrated.formatted())
+//                        Text(bottomSheetTranslationProrated.formatted())
                     } content: {
-                        ForecastView()
+                        ForecastView(bottomSheetTranslationProrated : bottomSheetTranslationProrated)
                     }
                     .onBottomSheetDrag { translation in
                         bottomSheetTranslation = translation / screenHeight
@@ -88,15 +88,16 @@ struct HomeView: View {
         }
     }
     private var attributedString: AttributedString {
-        var string = AttributedString("19°" + "\n " + "Mostly Clear")
+        var string = AttributedString("19°" + (hasDragged ? " | " : "\n ") + "Mostly Clear")
         
         if let temp = string.range(of: "19°") {
-            string[temp].font = .system(size: (96 - bottomSheetTranslationProrated - (96 - 20)), weight: .thin)
-            string[temp].foregroundColor = .primary
+            string[temp].font = .system(size: (96 - (bottomSheetTranslationProrated * (96 - 20))), weight: hasDragged ? .semibold : .thin)
+            string[temp].foregroundColor = hasDragged ? .secondary : .primary
         }
+        
         if let pipe = string.range(of: " | ") {
             string[pipe].font = .title3.weight(.semibold)
-            string[pipe].foregroundColor = .secondary
+            string[pipe].foregroundColor = .secondary.opacity(bottomSheetTranslationProrated)
         }
         if let weather = string.range(of: "Mostly Clear") {
             string[weather].font = .title3.weight(.semibold)

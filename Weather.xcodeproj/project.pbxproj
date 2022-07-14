@@ -19,6 +19,7 @@
 		ADC8FE05287ADC36008F9CA7 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC8FE04287ADC36008F9CA7 /* ForecastView.swift */; };
 		ADC8FE07287AE155008F9CA7 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC8FE06287AE155008F9CA7 /* Blur.swift */; };
 		ADD548DB287AB7BC004F7CF6 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD548DA287AB7BC004F7CF6 /* Shapes.swift */; };
+		ADE3C9C0287FF34100F46B49 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE3C9BF287FF34100F46B49 /* ForecastModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		ADC8FE04287ADC36008F9CA7 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		ADC8FE06287AE155008F9CA7 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		ADD548DA287AB7BC004F7CF6 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		ADE3C9BF287FF34100F46B49 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		AD3A74412875DCB50042C217 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ADE3C9BF287FF34100F46B49 /* ForecastModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				AD3A74332875DB8E0042C217 /* WeatherApp.swift in Sources */,
 				ADC8FE05287ADC36008F9CA7 /* ForecastView.swift in Sources */,
 				AD4FBD1B287A0B1100219C65 /* TabBar.swift in Sources */,
+				ADE3C9C0287FF34100F46B49 /* ForecastModel.swift in Sources */,
 				ADD548DB287AB7BC004F7CF6 /* Shapes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

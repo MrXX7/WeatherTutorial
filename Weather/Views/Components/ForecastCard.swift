@@ -11,8 +11,16 @@ struct ForecastCard: View {
     
     var forecast: Forecast
     var forecastPeriod: ForecastPeriod
-    var isActive: Bool = true
     
+    var isActive: Bool {
+    if forecastPeriod == ForecastPeriod.hourly {
+        let isHour = Calendar.current.isDate(.now, equalTo: forecast.date, toGranularity: .hour)
+        return isHour
+    } else {
+        let isToday = Calendar.current.isDate(.now, equalTo: forecast.date, toGranularity: .day)
+        return isToday
+    }
+}
     
     var body: some View {
         ZStack {
@@ -36,10 +44,19 @@ struct ForecastCard: View {
                 
                 VStack (spacing: -4){
 //                    Mark Forecast small icon
-                    Image(forecast.icon)
+                    Image("\(forecast.icon) small")
                     
+//                    Forecast Probability
+                    Text(forecast.probability, format: .percent)
+                        .font(.footnote.weight(.semibold))
+                        .foregroundColor(Color.probabilityText)
+                        .opacity(forecast.probability > 0 ? 1 : 0)
                 }
                 .frame(height: 42)
+                
+//                Mark Forecast Temperetaure
+                Text("\(forecast.temperature)°")
+                    .font(.title3)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 16)

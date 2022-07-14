@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct WeatherWidget: View {
+    var forecast: Forecast
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottom) {
+//            Mark Trapezoid
+            Trapezoid()
+                .fill(Color.weatherWidgetBackground)
+                .frame(width: 342, height: 174)
+            
+//            Mark Content
+            HStack(alignment: .bottom) {
+                VStack(alignment: .leading, spacing: 8) {
+//                    Mark Forecast Temperature
+                    Text("\(forecast.temperature)")
+                        .font(.system(size: 64))
+                }
+            }
+        }
+        .frame(width: 342, height: 184, alignment: .bottom)
     }
 }
 
 struct WeatherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherWidget()
+        WeatherWidget(forecast: Forecast.cities[0])
+            .preferredColorScheme(.dark)
     }
 }

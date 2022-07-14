@@ -9,7 +9,40 @@ import SwiftUI
 
 struct NavigationBar: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack (spacing: 8) {
+            HStack {
+//                Mark Back Button
+                Button {
+                    
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 23).weight(.medium))
+                        .foregroundColor(.secondary)
+                        
+//                        Mark Back Button Label
+                        Text("Weather")
+                            .font(.title)
+                            .foregroundColor(.primary)
+                    }
+                    .frame(height: 44)
+                }
+                Spacer()
+                
+//                Mark More Button
+                Image(systemName: "ellipsis.circle")
+                    .font(.system(size: 28))
+                    .frame(width: 44, height: 44, alignment: .trailing)
+            }
+                    .frame(height: 52)
+        }
+        .frame(height: 106, alignment: .top)
+        .padding(.horizontal, 16)
+        .padding(.top, 49)
+        .backgroundBlur(radius: 20, opaque: true)
+        .background(Color.navBarBackground)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .ignoresSafeArea()
     }
 }
 

@@ -23,8 +23,35 @@ struct WeatherWidget: View {
 //                    Mark Forecast Temperature
                     Text("\(forecast.temperature)")
                         .font(.system(size: 64))
+                    VStack(alignment: .leading, spacing: 2) {
+//                        Mark Forecast Temperature Range
+                        Text("H:\(forecast.high)°   L:\(forecast.low)°")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                        
+//                        Mark Forecast Location
+                        Text(forecast.location)
+                            .font(.body)
+                            .lineLimit(1)
+                    }
+                }
+                
+                Spacer()
+                
+                VStack(alignment: .trailing, spacing: 0) {
+//                    Mark Forecast Large Icon
+                    Image("\(forecast.icon) large")
+                        .padding(.trailing, 4)
+                    
+//                    Mark Weather
+                    Text(forecast.weather.rawValue)
+                        .font(.footnote)
+                        .padding(.trailing, 24)
                 }
             }
+            .foregroundColor(.white)
+            .padding(.bottom, 20)
+            .padding(.leading, 20)
         }
         .frame(width: 342, height: 184, alignment: .bottom)
     }

@@ -9,12 +9,22 @@ import SwiftUI
 
 struct WeatherView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+//            Mark Background
+            Color.background
+                .ignoresSafeArea()
+        }
+        .overlay {
+//            Mark Navigation Bar
+            NavigationBar()
+        }
+        .navigationBarHidden(true)
     }
 }
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherView()
+            .preferredColorScheme(.dark)
     }
 }
